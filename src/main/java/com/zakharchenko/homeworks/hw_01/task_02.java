@@ -1,4 +1,4 @@
-package com.zakharchenko.lectures.lecture_01;
+package com.zakharchenko.homeworks.hw_01;
 
 public class task_02 {
 

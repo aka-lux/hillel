@@ -3,19 +3,19 @@ package com.zakharchenko.homeworks.homework_05;
 import java.util.Date;
 
 public class OrderMutable {
-    private int id;
+    private long id;
     private Date deliveryDate;
-    private String customerId;
+    private long customerId;
     private String address;
 
-    public OrderMutable(int id, Date deliveryDate, String customerId, String address) {
+    public OrderMutable(long id, Date deliveryDate, long customerId, String address) {
         this.id = id;
         this.deliveryDate = deliveryDate;
         this.customerId = customerId;
         this.address = address;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -31,11 +31,11 @@ public class OrderMutable {
         this.deliveryDate = deliveryDate;
     }
 
-    public String getCustomerId() {
+    public long getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(long customerId) {
         this.customerId = customerId;
     }
 
@@ -65,16 +65,16 @@ public class OrderMutable {
         OrderMutable that = (OrderMutable) o;
 
         if (id != that.id) return false;
+        if (customerId != that.customerId) return false;
         if (deliveryDate != null ? !deliveryDate.equals(that.deliveryDate) : that.deliveryDate != null) return false;
-        if (customerId != null ? !customerId.equals(that.customerId) : that.customerId != null) return false;
         return address != null ? address.equals(that.address) : that.address == null;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (deliveryDate != null ? deliveryDate.hashCode() : 0);
-        result = 31 * result + (customerId != null ? customerId.hashCode() : 0);
+        result = 31 * result + (int) (customerId ^ (customerId >>> 32));
         result = 31 * result + (address != null ? address.hashCode() : 0);
         return result;
     }

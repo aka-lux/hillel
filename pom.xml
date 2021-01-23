@@ -5,15 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.zakharchenko</groupId>
-    <artifactId>zakharchenko</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    <description>Hillel Java Elementary</description>
-
-    <developers>
-        <developer>
-            <name>Alexei Zakharchenko</name>
-        </developer>
-    </developers>
+    <artifactId>hillel</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
     <build>
         <plugins>

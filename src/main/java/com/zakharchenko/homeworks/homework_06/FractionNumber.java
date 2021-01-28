@@ -3,8 +3,9 @@ package com.zakharchenko.homeworks.homework_06;
 import com.zakharchenko.homeworks.utils.Utils;
 
 public class FractionNumber implements Fraction {
-    private long numerator = 1;
-    private long denominator = 1;
+    private long numerator;
+    private long denominator;
+    long gcd;
 
     public FractionNumber(long numerator, long denominator) {
         if (numerator == 0)
@@ -17,6 +18,13 @@ public class FractionNumber implements Fraction {
         else {
             this.denominator = denominator;
         }
+
+        gcd = Utils.greatestCommonDivisor(Math.abs(numerator), Math.abs(denominator));
+
+        if (1 < gcd) {
+            this.numerator = numerator / gcd;
+            this.denominator = denominator / gcd;
+        }
     }
 
     public long getNumerator() {
@@ -28,9 +36,8 @@ public class FractionNumber implements Fraction {
     }
 
     public Fraction plus(Fraction fractionNumber) {
-        long numerator = 1;
-        long denominator = 1;
-        long gcd = 1;
+        long numerator;
+        long denominator;
 
         if (fractionNumber.getDenominator() == this.denominator) {
             numerator = this.numerator + fractionNumber.getNumerator();
@@ -40,20 +47,12 @@ public class FractionNumber implements Fraction {
             denominator = this.denominator * fractionNumber.getDenominator();
         }
 
-        gcd = Utils.gcdEvklid(Math.abs(numerator), Math.abs(denominator));
-
-        if (1 < gcd) {
-            numerator = numerator / gcd;
-            denominator = denominator / gcd;
-        }
-
         return new FractionNumber(numerator, denominator);
     }
 
     public Fraction minus(Fraction fractionNumber) {
-        long numerator = 1;
-        long denominator = 1;
-        long gcd = 1;
+        long numerator;
+        long denominator;
 
         if (fractionNumber.getDenominator() == this.denominator) {
             numerator = this.numerator - fractionNumber.getNumerator();
@@ -63,47 +62,25 @@ public class FractionNumber implements Fraction {
             denominator = this.denominator * fractionNumber.getDenominator();
         }
 
-        gcd = Utils.gcdEvklid(Math.abs(numerator), Math.abs(denominator));
-        if (1 < gcd) {
-            numerator = numerator / gcd;
-            denominator = denominator / gcd;
-        }
-
         return new FractionNumber(numerator, denominator);
     }
 
     public Fraction multiply(Fraction fractionNumber) {
-        long numerator = 1;
-        long denominator = 1;
-        long gcd = 1;
+        long numerator ;
+        long denominator ;
 
         numerator = this.numerator * fractionNumber.getNumerator();
         denominator = this.denominator * fractionNumber.getDenominator();
-
-        gcd = Utils.gcdEvklid(Math.abs(numerator), Math.abs(denominator));
-
-        if (1 < gcd) {
-            numerator = numerator / gcd;
-            denominator = denominator / gcd;
-        }
 
         return new FractionNumber(numerator, denominator);
     }
 
     public Fraction divide(Fraction fractionNumber) {
-        long numerator = 1;
-        long denominator = 1;
-        long gcd = 1;
+        long numerator ;
+        long denominator;
 
         numerator = this.numerator * fractionNumber.getDenominator();
         denominator = this.denominator * fractionNumber.getNumerator();
-
-        gcd = Utils.gcdEvklid(Math.abs(numerator), Math.abs(denominator));
-
-        if (1 < gcd) {
-            numerator = numerator / gcd;
-            denominator = denominator / gcd;
-        }
 
         return new FractionNumber(numerator, denominator);
     }

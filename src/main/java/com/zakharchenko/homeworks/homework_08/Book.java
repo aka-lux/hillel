@@ -5,10 +5,10 @@ import java.util.Date;
 
 public final class Book {
 
-   private Author author;
-   private Date issueDate;
-   private Genre genre;
-   private Long isbn;
+    private final Author author;
+    private final Date issueDate;
+    private final Genre genre;
+    private final Long isbn;
 
     public Book(Author author, Date issueDate, Genre genre, Long isbn) {
         this.author = author;

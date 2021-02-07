@@ -4,9 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public final class Author {
-    private String firstName;
-    private String lastName;
-    private Date dateOfBirth;
+    private final String firstName;
+    private final String lastName;
+    private final Date dateOfBirth;
 
     public Author(String firstName, String lastName, Date dateOfBirth) {
         this.firstName = firstName;

@@ -13,6 +13,13 @@ public class Book {
     Genre genre;
     Long isbn;
 
+    public Book(Author author, Date issueDate, Genre genre, Long isbn) {
+        this.author = author;
+        this.issueDate = new Date(issueDate.getTime());
+        this.genre = genre;
+        this.isbn = isbn;
+    }
+
     public Date getIssueDate() {
         return new Date(this.issueDate.getTime());
     }

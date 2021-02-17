@@ -5,5 +5,5 @@ import lombok.Value;
 @Value
 public class Mouse {
     String name;
-    int calories;
+    Integer calories;
 }

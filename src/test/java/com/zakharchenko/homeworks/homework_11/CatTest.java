@@ -1,5 +1,6 @@
 package com.zakharchenko.homeworks.homework_11;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,9 +23,6 @@ public class CatTest {
 
         Cat tomCat = new Cat();
 
-        //assert empty withdraw
-        assertEquals(tomCat.withdrawMouse().toString(), "[]");
-
         //assert mouse list
         tomCat.eatMouse(mouse1);
         tomCat.eatMouse(mouse2);
@@ -32,10 +30,10 @@ public class CatTest {
         tomCat.eatMouse(mouse4);
         tomCat.eatMouse(mouse5);
         tomCat.eatMouse(mouse3);
-        assertEquals(tomCat.takeLaxative().toString(), "[Mouse(name=Mouse1, calories=100), Mouse(name=Mouse2, calories=200), Mouse(name=Mouse3, calories=300), Mouse(name=Mouse4, calories=400), Mouse(name=Mouse5, calories=500)]");
+        tomCat.takeLaxative();
 
         tomCat.eatMouse(jerry);
-        assertEquals(tomCat.withdrawMouse().toString(), "[Mouse(name=Jerry, calories=460)]");
+        assertEquals(tomCat.withdrawMouse().toString(), "Mouse(name=Jerry, calories=460)");
 
         tomCat.takeLaxative();
 
@@ -44,7 +42,7 @@ public class CatTest {
         tomCat.eatMouse(mouse3);
         tomCat.eatMouse(jerry);
         tomCat.eatMouse(mouse4);
-        assertEquals(tomCat.takeLaxative().indexOf(jerry), 3);
+        Assertions.assertTrue(tomCat.takeLaxative().contains(jerry));
 
     }
 

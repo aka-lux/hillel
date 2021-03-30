@@ -16,7 +16,7 @@ public class CatTest {
     public void testCat() {
         Mouse mouse1 = new Mouse("Mouse1", 100);
         Mouse mouse2 = new Mouse("Mouse2", 200);
-        Mouse mouse3 = new Mouse("Mouse3", 300);
+        Mouse mouse3 = new Mouse("Mouse3", 700);
         Mouse mouse4 = new Mouse("Mouse4", 400);
         Mouse mouse5 = new Mouse("Mouse5", 500);
         Mouse jerry = new Mouse("Jerry", 460);

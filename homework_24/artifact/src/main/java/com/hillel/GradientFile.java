@@ -10,61 +10,67 @@ import java.io.IOException;
  */
 public class GradientFile
 {
-    public static void main( String[] args )
-    {
-       new GradientFile().createGradientFile();
-
-    }
-
-    public void createGradientFile()
+   void createGradientFile()
     {
         String outputFileName = "gradient.html";
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(outputFileName))) {
-            writeHeader(bw);
-            writeTable(bw);
-            writeFooter(bw);
-
+            bw.write(getHeader());
+            bw.write(getTable(255));
+            bw.write(getFooter());
         }
         catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void writeHeader(BufferedWriter bw) throws IOException
+     String  getHeader()
     {
-        bw.write("<!DOCTYPE html>" + "\n");
-        bw.write("<html>" + "\n");
-        bw.write("<head></head>" + "\n");
-        bw.write("<body>" + "\n");
+        String str =
+        "<!DOCTYPE html> \n" +
+        "<html> \n" +
+        "<head></head> \n"+
+        "<body> \n";
+
+        return str;
     }
 
-    public void writeFooter(BufferedWriter bw) throws IOException
+     String getFooter()
     {
-        bw.write("</body>" + "\n");
-        bw.write("</html>" + "\n");
+        String str =
+        "</body> \n"+
+        "</html> \n";
+        return str;
     }
 
-    public void writeTable(BufferedWriter bw) throws IOException
+     String  getTable(int k)
     {
-        bw.write("<table>" + "\n");
-        for (int i = 255; i >= 0; i-=10) {
-            writeRow(bw,i);
+        StringBuffer strBuf = new StringBuffer();
+        strBuf.append("<table> \n");
+        for (int i = k; i >= 0; i-=10) {
+            strBuf.append(getRow(i));
         }
-        bw.write("</table>" + "\n");
+        strBuf.append("</table> \n");
+
+        return strBuf.toString();
+
     }
 
-    public void writeRow(BufferedWriter bw, int i) throws IOException
+     String  getRow( int i)
     {
-        bw.write("  <tr>" + "\n");
-        writeColumn(bw, i,0,0);
-        writeColumn(bw,0,i,0);
-        writeColumn(bw,0,0,i);
-        bw.write("  </tr>" + "\n");
+        StringBuffer strBuf = new StringBuffer();
+        strBuf.append("  <tr> \n");
+        strBuf.append(getColumn( i,0,0));
+        strBuf.append(getColumn(0,i,0));
+        strBuf.append(getColumn(0,0,i));
+        strBuf.append("  </tr> \n");
+
+        return strBuf.toString();
     }
 
-    public void writeColumn(BufferedWriter bw, int r, int g, int b) throws IOException
+     String getColumn(int r, int g, int b)
     {
-        bw.write("    <td width=\"50\" height=\"50\" style='background-color:rgb("+ r +", "+ g +", "+ b +")'></td>" + "\n");
+        String str = "    <td width=\"50\" height=\"50\" style='background-color:rgb("+ r +", "+ g +", "+ b +")'></td>" + "\n";
+        return str;
     }
 
 }

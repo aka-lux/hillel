@@ -1,9 +1,10 @@
 package com.hillel;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ProcedureTest
 {
@@ -12,8 +13,8 @@ public class ProcedureTest
     @Test
     public void isPalindromTest()
     {
-        assertTrue( proc.isPalindrom("eve") );
-        assertTrue( proc.isPalindrom("qwertrewq") );
+        assertEquals(proc.isPalindrom("eve"),true);
+        assertEquals(proc.isPalindrom("qwertrewq"),true);
 
     }
 

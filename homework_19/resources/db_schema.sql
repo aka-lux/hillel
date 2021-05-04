@@ -1,4 +1,5 @@
 -- user can have only one role
+drop table roles;
 create table roles
 (
   id integer primary key,
@@ -11,6 +12,7 @@ insert into roles (name, description) values
   ('user','Can create data, update and delete own data'),
   ('content_manage', 'can create, update, and delete any data'),
   ('administrator', 'full data access, can create users');
+
 
 drop table users;
 
@@ -30,6 +32,8 @@ insert into users (name, login, password, role) values
   ('Vladimir Vladimirov', 'vova', 'qwe123',4);
 
 -- user can be a member of many groups
+drop table groups;
+
 create table groups
 (
   id integer primary key,
@@ -68,9 +72,24 @@ insert into user_groups (user_id, group_id) values
 (4,5),
 (4,6);
 
+SELECT * from users;
+
+SELECT * from roles;
+
+SELECT * from groups;
+
 SELECT * from users WHERE role = '1';
 
 SELECT * from user_groups ug
 join users u on user_id = id
-where group_id ='1';
+where group_id ='4';
 
+SELECT * FROM user_groups WHERE user_id = 2;
+
+INSERT INTO user_groups (user_id, group_id) VALUES (5, 1);
+
+DELETE  FROM user_groups where user_id = 5;
+
+select *  FROM user_groups;
+
+delete from users where id (5,6,7,8,9,10);

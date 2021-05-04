@@ -1,53 +1,50 @@
 package org.hillel;
 
 import org.hillel.dao.GroupDao;
+import org.hillel.dao.RoleDao;
 import org.hillel.dao.UserDao;
+import org.hillel.entity.Role;
 import org.hillel.entity.User;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class JdbcDemo
 {
-  public static void main(String[] args)
-  {
-    try (Connection connection = getConnection())
-    {
-      UserDao dao = new UserDao(connection);
+  public static void main(String[] args) {
+    //    UserDao dao = new UserDao(connection);
+
 //      User user = new User(100, "Ivan", "student", "123456");
 //
 //      dao.create(user);
 //      System.out.println("CREATE :: " + user);
 
-      User user100 = dao.read(1);
-      System.out.println("READ   :: " + user100);
-//
-//      user100.setName("updated-student");
-//      dao.update(user100);
-//      System.out.println("UPDATE :: " + user100);
-//
-//      dao.delete(100);
+    try (Connection connection = ConnectionManager.getConnection()) {
 
-      System.out.println("DONE!");
+      try (PreparedStatement preparedStatement1 = connection.prepareStatement("SELECT * FROM user_groups WHERE user_id = 2" )) {
+
+        try (ResultSet resultSet1 = preparedStatement1.executeQuery()) {
+          while (resultSet1.next()){
+            System.out.println(resultSet1.getLong("group_id"));
+          }
+
+        } catch (SQLException e) {
+          e.printStackTrace();
+        }
+
+      } catch (SQLException e) {
+        e.printStackTrace();
+      }
+
     }
     catch (Exception e)
     {
       e.printStackTrace();
     }
+//
+//  }
+
+
+
   }
 
-  private static Connection getConnection()
-  {
-    Connection connection = null;
-    try
-    {
-      connection = DriverManager.getConnection("jdbc:sqlite:resources/jdbc-demo.sqlite3");
-    }
-    catch (SQLException e)
-    {
-      e.printStackTrace();
-    }
-    return connection;
-  }
 }

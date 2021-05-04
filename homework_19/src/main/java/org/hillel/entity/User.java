@@ -53,13 +53,13 @@ public class User
     this.password = password;
   }
 
-//  public Group getGroup() {    return group;  }
-//
-//  public void setGroup(Group group) {    this.group = group;  }
-//
-//  public Role getRole() {    return role;  }
-//
-//  public void setRole(Role role) {    this.role = role;  }
+  public ArrayList<Long> getGroups() {    return groupIds;  }
+
+  public void setGroup(ArrayList<Long> group) {    this.groupIds = group;  }
+
+  public Long getRole() {    return roleId;  }
+
+  public void setRole(Long role) {    this.roleId = role;  }
 
   @Override
   public String toString() {
@@ -68,8 +68,8 @@ public class User
             ", name='" + name + '\'' +
             ", login='" + login + '\'' +
             ", password='" + password + '\'' +
-//            ", group=" + group +
-//            ", role=" + role +
+            ", group=" + groupIds +
+            ", role=" + roleId +
             '}';
   }
 }

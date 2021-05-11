@@ -34,5 +34,6 @@ public class App {
         pool.execute(doorManufacturer2);
 
         pool.shutdown();
+
     }
 }

@@ -53,4 +53,5 @@ public class Table  {
         result = 31 * result + (doorReady ? 1 : 0);
         return result;
     }
+
 }
